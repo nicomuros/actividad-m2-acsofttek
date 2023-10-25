@@ -44,21 +44,18 @@ Las capas principales son:
       menú interactivo que presenta opciones para mostrar tareas, agregar tareas, modificar tareas, eliminar tareas y 
       salir de la aplicación.
 
-    - Para realizar estas operaciones, `TareaVistaImpl` llama a métodos de la intefaz capa de servicio `TareaServicio` 
-      correspondientes a cada opción del menú. Esto permite a los usuarios gestionar tareas de manera eficiente y sin 
-      necesidad de conocer los detalles de implementación subyacentes. La interacción se realiza a través de la entrada 
-      y salida estándar de la consola, lo que hace que la aplicación sea fácil de utilizar para usuarios finales.
+    - Para realizar estas operaciones, `TareaVistaImpl` llama a métodos de la intefaz `TareaServicio` 
+      correspondientes a cada opción del menú. Esto permite a los usuarios gestionar tareas sin 
+      necesidad de conocer los detalles de implementación subyacentes. 
 
 
 2. **Capa de Servicio**
     - Ubicación: `com.softtek.m2.servicio`
     - Intefaz: `TareaServicio`
     - Descripción: La capa de lógica de negocio contiene la lógica central de la aplicación. 
-   Aquí se procesan y gestionan los datos de acuerdo con las reglas de negocio. Interactúa con la capa de persistencia 
-   de datos para realizar operaciones CRUD en los objetos de dominio. También maneja excepciones y errores. 
-    - `TareaServicioImpl` contiene métodos para agregar, obtener, modificar y eliminar tareas al interactuar con la
-   interfaz de la capa de persistencia de datos `TareaRepositorio`.
-   
+   Aquí se procesan y gestionan los datos. Interactúa con la capa de persistencia 
+   de datos para realizar operaciones CRUD a partir de la interfaz `TareaServicioImpl`. También maneja excepciones y errores. 
+  
 
 
 3. **Capa de Persistencia de Datos (Repositorio)**
@@ -67,7 +64,7 @@ Las capas principales son:
     - Descripción: La capa de persistencia de datos se encarga de la gestión de datos y la interacción con el 
    almacenamiento. En este caso, `TareaRepositorioImpl` utiliza una lista en memoria para almacenar tareas, especificamente,
    almacena una lista de objetos `Tarea`. Proporciona métodos para agregar, consultar, 
-   modificar y eliminar registros, además de manejar la persistencia y recuperación de datos.
+   modificar y eliminar registros.
 
 
 4. **Capa de Modelos**
