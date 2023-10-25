@@ -1,0 +1,109 @@
+<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>390</x><y>84</y><w>126</w><h>36</h></coordinates><panel_attributes>&lt;&lt;Interfaz&gt;&gt;
+TareaVista
+--
+mostrarMenu() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>678</x><y>42</y><w>228</w><h>180</h></coordinates><panel_attributes>TareaVistaImpl
+--
+-entrada: Scanner
+-servicio: TareaServicio
+--
++ mostrarMenu() : void
+- mostrarTareas() : void
+- agregarTarea() : void
+- modificarTarea() : void
+- eliminarTarea() : void
+- mostrarError(error : Exception) : void
+--
+Responsabilidades:
+- Interactuar con el usuario a través de la línea de comandos.
+- Mostrar un menú principal de la aplicación
+- Agregar una tarea al sistema al iniciar la aplicación.
+- Mostrar la lista de tareas activas en la consola.
+- Permitir al usuario agregar una nueva tarea
+- Permitir al usuario modificar una tarea
+- Permitir al usuario eliminar una tarea
+- Mostrar mensajes de error en la consola en caso de excepciones.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>90</y><w>180</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Implementa&gt;&gt;</panel_attributes><additional_attributes>10;20;280;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>354</x><y>312</y><w>234</w><h>72</h></coordinates><panel_attributes>&lt;&lt;Interfaz&gt;&gt;
+TareaServicio
+--
+obtenerTareas() : List&lt;Tarea&gt;
+obtenerTareaPorId(tareaId : Integer) : Tarea
+agregarTarea(descripcion : String) : void
+modificarTarea(descripcion : String, tareaId : Integer) : void
+eliminarTarea(tareaId : Integer) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>672</x><y>270</y><w>234</w><h>162</h></coordinates><panel_attributes>TareaServicioImpl
+--
+- repositorio: TareaRepositorio
+--
++ obtenerTareas() : List&lt;Tarea&gt;
++ obtenerTareaPorId(tareaId : Integer) : Tarea
++ agregarTarea(descripcion : String) : void
++ modificarTarea(descripcion : String, tareaId : Integer) : void
++ eliminarTarea(tareaId : Integer) : void
+--
+Responsabilidades:
+- Gestionar las operaciones relacionadas con las tareas, 
+   como agregar, modificar y eliminar.
+- Validar los datos de entrada para garantizar que sean 
+   válidos y apropiados.
+- Coordinar con el repositorio de tareas para acceder y 
+   actualizar los datos de las tareas.
+- Manejar excepciones relacionadas con datos inválidos
+   y recursos no encontrados.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>582</x><y>336</y><w>102</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Implementa&gt;&gt;</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>354</x><y>522</y><w>234</w><h>78</h></coordinates><panel_attributes>&lt;&lt;Interfaz&gt;&gt;
+TareaRepositorio
+--
+eliminarTareaPorId(tareaId : Integer) : void
+modificarTarea(tarea : Tarea) : void
+seleccionarTareaPorId(tareaId : Integer) : Optional&lt;Tarea&gt;
+seleccionarTodasLasTareas() : List&lt;Tarea&gt;
+agregarTarea(tarea : Tarea) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>672</x><y>492</y><w>240</w><h>168</h></coordinates><panel_attributes>TareaRepositorioImpl
+--
+- listaDeTareas : List&lt;Tarea&gt;
+--
++ seleccionarTodasLasTareas() : List&lt;Tarea&gt;
++ agregarTarea(tarea : Tarea) : void
++ seleccionarTareaPorId(tareaId : Integer) : Optional&lt;Tarea&gt;
++ modificarTarea(tarea : Tarea) : void
++ eliminarTareaPorId(tareaId : Integer) : void
+--
+Responsabilidades:
+- Almacenar y gestionar una lista de tareas en memoria.
+- Proporcionar la capacidad de agregar nuevas tareas a la lista.
+- Proporcionar la capacidad de seleccionar y devolver todas las 
+  tareas almacenadas.
+- Comprobar si una tarea con un ID específico existe en la lista.
+- Proporcionar la capacidad de seleccionar y devolver una tarea 
+  por su ID, envuelta en un objeto `Optional`.
+- Modificar una tarea existente en la lista según el ID proporcionado.
+- Eliminar una tarea de la lista según su ID.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>582</x><y>552</y><w>102</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Implementa&gt;&gt;</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>354</x><y>714</y><w>240</w><h>210</h></coordinates><panel_attributes>Tarea
+--
+- descripcion : String
+_- contador: Integer_
+- id : Integer
+--
++ Tarea(descripcion : String)
++ getId() : Integer
++ getDescripcion() : String
++ setDescripcion(descripcion : String) : void
++ equals (o : Object) : boolean
++ hashCode() : int
++ toString() : String
+--
+Responsabilidades:
+- Representar una tarea con una descripción y un ID.
+- Inicializar una tarea con una descripción proporcionada 
+  y generar un ID único.
+- Proporcionar métodos para obtener y establecer la descripción
+  de la tarea.
+- Implementar el método `equals` para comparar tareas en 
+  función de su ID y descripción.
+- Implementar el método `hashCode` para generar un código 
+  hash basado en el ID y la descripción de la tarea.
+- Implementar el método `toString` para representar la tarea 
+  en formato legible.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>588</x><y>654</y><w>282</w><h>186</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+&lt;&lt;Agregación&gt;&gt;                                                                           </panel_attributes><additional_attributes>320;10;320;290;10;290</additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>162</y><w>234</w><h>162</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;Dependencia&gt;&gt;</panel_attributes><additional_attributes>10;250;10;20;370;20</additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>408</y><w>228</w><h>126</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;Dependencia&gt;&gt;</panel_attributes><additional_attributes>10;190;10;20;360;20</additional_attributes></element></diagram>
