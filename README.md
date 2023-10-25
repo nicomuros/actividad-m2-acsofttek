@@ -74,3 +74,15 @@ Las capas principales son:
     - Ubicación: `com.softtek.m2.modelo`
     - Descripción: La capa de modelos contiene la clase que representa el modelo de la aplicación. Aquí se encuentra el
     modelo `Tarea` que se encarga de representar el tipo de dato que la aplicación usa. 
+
+## Diagramas
+### Diagrama de clases
+El siguiente diagrama muestra la relación que existe entre las distintas clases del proyecto, apoyandose en la arquitectura
+de capas que se describió previamente:
+
+![](https://github.com/nicomuros/actividad-m2-acsofttek/blob/main/diagramas/Diagrama%20de%20clases.png?raw=true)
+### Diagrama de flujo
+El siguiente diagrama muestra el proceso desde que el usuario ingresa a la aplicación, hasta que ingresa una tarea en el
+repositorio.
+
+![](https://github.com/nicomuros/actividad-m2-acsofttek/blob/main/diagramas/Diagrama%20de%20flujo%20(agregar%20tarea).png?raw=true)
