@@ -1,5 +1,6 @@
 package com.softtek.m2.vista;
 
+import com.softtek.m2.modelo.Tarea;
 import com.softtek.m2.servicio.TareaServicio;
 import com.softtek.m2.servicio.TareaServicioImpl;
 
@@ -50,6 +51,7 @@ public class TareaVistaImpl implements TareaVista{
                     eliminarTarea();
                     break;
                 case "0":
+                    System.out.println("Muchas gracias por usar la aplicación! \nAutor: Nicolás Muros");
                     continuar = false;
                     break;
                 default:
@@ -88,11 +90,15 @@ public class TareaVistaImpl implements TareaVista{
         System.out.println("\nIngrese el ID de la tarea que quiere modificar");
         try {
             Integer tareaId = Integer.parseInt(entrada.nextLine());
-            System.out.println("Tarea a modificar: " + servicio.obtenerTareaPorId(tareaId));
+            Tarea tarea = servicio.obtenerTareaPorId(tareaId);
+            System.out.println("Tarea a modificar: ID: " +
+                    tarea.getId() + ", Descripción: " + tarea.getDescripcion() + ".");
             System.out.print("Ingrese la nueva descripción: ");
             String descripcion = entrada.nextLine();
             servicio.modificarTarea(descripcion, tareaId);
-            System.out.println("Tarea modificada exitosamente: " + servicio.obtenerTareaPorId(tareaId));
+            Tarea tareaActualizada = servicio.obtenerTareaPorId(tareaId);
+            System.out.println("Tarea modificada exitosamente: ID: " +
+                    tareaActualizada.getId() + ", Descripción: " + tareaActualizada.getDescripcion() + ".");
         } catch (Exception e){
             mostrarError(e);
         }
@@ -106,7 +112,8 @@ public class TareaVistaImpl implements TareaVista{
         System.out.println("\nIngrese el ID de la tarea que quiere eliminar: ");
         try {
             Integer tareaId = Integer.parseInt(entrada.nextLine());
-            System.out.println("Tarea a eliminar: " + servicio.obtenerTareaPorId(tareaId));
+            Tarea tarea = servicio.obtenerTareaPorId(tareaId);
+            System.out.println("Tarea a eliminar: ID: " + tarea.getId() + ", Descripción: " + tarea.getDescripcion() + ".");
             servicio.eliminarTarea(tareaId);
             System.out.println("Tarea eliminada exitosamente.");
         } catch (Exception e){
