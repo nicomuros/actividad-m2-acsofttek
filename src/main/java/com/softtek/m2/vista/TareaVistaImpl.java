@@ -34,9 +34,12 @@ public class TareaVistaImpl implements TareaVista{
                     3: Modificar una tarea.
                     4: Eliminar una tarea.
                     0: Salir.
-                    Elija una opción: """);
+                    Elija una opción:""");
 
+            // Se captura el input del usuario
             String userInputOpcion = entrada.nextLine();
+
+            // Se decide que camino seguir acore a la elección del usuario
             switch (userInputOpcion) {
                 case "1":
                     mostrarTareas();
@@ -50,10 +53,14 @@ public class TareaVistaImpl implements TareaVista{
                 case "4":
                     eliminarTarea();
                     break;
+
+                    // Se cierra el programa
                 case "0":
                     System.out.println("Muchas gracias por usar la aplicación! \nAutor: Nicolás Muros");
                     continuar = false;
                     break;
+
+                    // Cuando se ingresa un dato no válido como opción, se muestra un mensaje de error
                 default:
                     System.out.println("\nERROR: Ingrese una opción correcta.");
             }
@@ -65,7 +72,11 @@ public class TareaVistaImpl implements TareaVista{
      */
     private void mostrarTareas(){
         System.out.println("\nTareas activas:");
-        servicio.obtenerTareas().forEach((t) -> System.out.println("ID: " + t.getId() + ", Descripción: " + t.getDescripcion() + "."));
+
+        // Solicitud al servicio de la lista de tareas. Se recorre y se muestran en consola
+        servicio.obtenerTareas()
+                .forEach((t) -> System.out.println(
+                        "ID: " + t.getId() + ", Descripción: " + t.getDescripcion() + "."));
     }
 
     /**
@@ -75,7 +86,11 @@ public class TareaVistaImpl implements TareaVista{
     private void agregarTarea(){
         System.out.print("\nIngrese la descripción de la nueva tarea: ");
         try {
+
+            // Se captura la descripción
             String descripcion = entrada.nextLine();
+
+            // Se envía la descripción al servicio para que cargue la tarea en el repositorio
             servicio.agregarTarea(descripcion);
         } catch (Exception e){
             mostrarError(e);
@@ -89,13 +104,24 @@ public class TareaVistaImpl implements TareaVista{
     private void modificarTarea(){
         System.out.println("\nIngrese el ID de la tarea que quiere modificar");
         try {
+            // Captura del ID
             Integer tareaId = Integer.parseInt(entrada.nextLine());
+
+            // Se recupera la tarea original
             Tarea tarea = servicio.obtenerTareaPorId(tareaId);
+
+            // Se muestra al usuario la tarea original
             System.out.println("Tarea a modificar: ID: " +
                     tarea.getId() + ", Descripción: " + tarea.getDescripcion() + ".");
+
+            // Captura de la nueva descripción
             System.out.print("Ingrese la nueva descripción: ");
             String descripcion = entrada.nextLine();
+
+            // Se solicita al servicio modificar la tarea
             servicio.modificarTarea(descripcion, tareaId);
+
+            // Se recupera la tarea ya modificada y se muestra en pantalla
             Tarea tareaActualizada = servicio.obtenerTareaPorId(tareaId);
             System.out.println("Tarea modificada exitosamente: ID: " +
                     tareaActualizada.getId() + ", Descripción: " + tareaActualizada.getDescripcion() + ".");
@@ -111,9 +137,15 @@ public class TareaVistaImpl implements TareaVista{
     private void eliminarTarea(){
         System.out.println("\nIngrese el ID de la tarea que quiere eliminar: ");
         try {
+
+            // Se captura el id de la tarea que se desea eliminar
             Integer tareaId = Integer.parseInt(entrada.nextLine());
+
+            // Solicitud al servicio por los datos de la tarea
             Tarea tarea = servicio.obtenerTareaPorId(tareaId);
             System.out.println("Tarea a eliminar: ID: " + tarea.getId() + ", Descripción: " + tarea.getDescripcion() + ".");
+
+            // Solicitud al servicio de eliminar la tarea
             servicio.eliminarTarea(tareaId);
             System.out.println("Tarea eliminada exitosamente.");
         } catch (Exception e){

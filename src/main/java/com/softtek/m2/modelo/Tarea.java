@@ -8,12 +8,14 @@ public class Tarea {
     private static Integer contador = 0;
 
     // Identificador de la tarea.
-    private Integer id;
+    private final Integer id;
 
     // Descripción de la tarea.
     private String descripcion;
 
     public Tarea(String descripcion) {
+
+        // Se almacena el id, y se aumenta en 1 el contador estático, para la siguiente tarea
         this.id = ++contador;
         this.descripcion = descripcion;
     }

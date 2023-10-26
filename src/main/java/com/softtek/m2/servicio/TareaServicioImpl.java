@@ -21,6 +21,8 @@ public class TareaServicioImpl implements TareaServicio{
      * @throws DatosInvalidosException Si la descripción está vacía.
      */
     public void agregarTarea(String descripcion){
+
+        // Validación
         if (descripcion.isEmpty()) throw new DatosInvalidosException("Debe proporcionar una descripcion.");
 
         Tarea nuevaTarea = new Tarea(descripcion);
@@ -44,8 +46,11 @@ public class TareaServicioImpl implements TareaServicio{
      * @throws RecursoNoEncontradoException Si no se encuentra una tarea con el ID especificado.
      */
     public Tarea obtenerTareaPorId(Integer tareaId){
+
+        // Se solicita al repositorio una tarea especifica. Si no existe, se lanza un error
         return repositorio.seleccionarTareaPorId(tareaId)
-                .orElseThrow(() -> new RecursoNoEncontradoException("No se encontró una tarea con el id: " + tareaId));
+                .orElseThrow(() -> new RecursoNoEncontradoException
+                        ("No se encontró una tarea con el id: " + tareaId));
     }
 
     /**
@@ -57,22 +62,27 @@ public class TareaServicioImpl implements TareaServicio{
      * @throws RecursoNoEncontradoException Si no se encuentra una tarea con el ID especificado.
      */
     public void modificarTarea(String descripcion, Integer tareaId){
+
+        // Tarea original recuperada por el id. Si no existe, se lanza un error
         Tarea tarea = repositorio.seleccionarTareaPorId(tareaId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("No se encontró una tarea con el id: " + tareaId));
 
+        // Validaciones
         boolean tareaActualizada = false;
-
         if (descripcion.isEmpty()) throw new DatosInvalidosException("Debe proporcionar una descripción");
 
+        // Comprobación de que la descripción nueva difiera de la original
         if (!tarea.getDescripcion().equals(descripcion)){
             tarea.setDescripcion(descripcion);
             tareaActualizada = true;
         }
 
+        // Si no se actualizó, se lanza un error
         if (!tareaActualizada){
             throw new DatosInvalidosException("No se actualizó la tarea con id: " + tareaId + ", no hay diferencia en los datos");
         }
 
+        // Solicitud al repositorio para eliminar una tarea
         repositorio.modificarTarea(tarea);
     }
 
@@ -83,7 +93,12 @@ public class TareaServicioImpl implements TareaServicio{
      * @throws RecursoNoEncontradoException Si no se encuentra una tarea con el ID especificado.
      */
     public void eliminarTarea(Integer tareaId){
-        if (!repositorio.existeTareaPorId(tareaId)) throw new RecursoNoEncontradoException("No se encontró una tarea con el id: " + tareaId);
+
+        // Se consulta si existe una tarea con ese ID. Si no es así, se lanza un error
+        if (!repositorio.existeTareaPorId(tareaId))
+            throw new RecursoNoEncontradoException("No se encontró una tarea con el id: " + tareaId);
+
+        // Solicitud al repositorio para eliminar la tarea
         repositorio.eliminarTareaPorId(tareaId);
     }
 }
