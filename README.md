@@ -1,6 +1,6 @@
 # Descripción
 
-Este proyecto fue realizado como presentación de la **Actividad M2** de la **Academia Java + Springboot**, dictada por **Softtek** en conjunto con la **Universidad Siglo-XII**. El objetivo del proyecto fue desarrollar una aplicación tipo Todo-List que impelemente un filtrado de datos, y luego desarrollar un diagrama de flujo de dicha aplicación.
+Este proyecto fue realizado como presentación de la **Actividad M2** de la **Academia Java + Springboot**, dictada por **Softtek** en conjunto con la **Universidad Siglo-XXI**. El objetivo del proyecto fue desarrollar una aplicación tipo Todo-List que impelemente un filtrado de datos, y luego desarrollar un diagrama de flujo de dicha aplicación.
 
 # Instalación
 ## Dependencias
