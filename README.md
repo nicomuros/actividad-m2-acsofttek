@@ -1,13 +1,18 @@
 # Descripción
 
-TODO-List es una aplicación CLI de gestión de tareas, desarrollada para la segunda entrega de la Academia Java+Springboot brindada por Softtek + Universidad Siglo XXI,
-es una herramienta que permite a los usuarios gestionar sus tareas. 
+Este proyecto fue realizado como presentación de la **Actividad M2** de la **Academia Java + Springboot**, dictada por **Softtek** en conjunto con la **Universidad Siglo-XII**. El objetivo del proyecto fue desarrollar una aplicación tipo Todo-List que impelemente un filtrado de datos, y luego desarrollar un diagrama de flujo de dicha aplicación.
 
-## Instalación y uso
+# Instalación
+## Dependencias
+Para poder ejecutar el proyecto es necesario tener instaladas y configuradas las siguientes dependencias: 
 
-Requisitos: Maven y Java 17.
+* **[Maven 3.9+](https://maven.apache.org/download.cgi)** 
+* **[JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)**
+* **[Git](https://git-scm.com/downloads)**
 
-### Instalación
+Es importante tener configuradas las variables de entorno `JAVA_HOME` `MAVEN_HOME`, junto con sus `PATH` para ejecutar correctamente el empaquetado y la iniciación de la aplicación. 
+
+## Instalación
 Siga estos pasos para instalar la aplicación:
 
 1. Clonar el repositorio desde GitHub al sistema local. Puedes hacerlo utilizando Git y ejecutando el siguiente comando en tu terminal:
